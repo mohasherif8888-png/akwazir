@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>الوزير للبصريات - Al Wazir Optics</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --deep-bg: #020617;
+        --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        --phone-radius: 34px;
+        --screen-radius: 24px;
+      }
+
+      .gpu-accelerated {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+
+      body {
+        background-color: #020617; /* Dark Base to match Header */
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        font-family: 'Cairo', sans-serif;
+        color: white; /* Default text color white for dark bg */
+      }
+
+      /* --- GLOBAL LIGHTNING SYSTEM (THE STORM) --- */
+      @keyframes lightning-flash-random {
+        0%, 90% { 
+            border-color: rgba(59, 130, 246, 0.2); 
+            box-shadow: 0 0 5px rgba(59,130,246,0.05); 
+        }
+        92% { 
+            border-color: rgba(255, 255, 255, 0.8); 
+            box-shadow: 0 0 20px #60a5fa, inset 0 0 10px #60a5fa; 
+        }
+        94% { 
+            border-color: rgba(59, 130, 246, 0.2); 
+            box-shadow: 0 0 5px rgba(59,130,246,0.05); 
+        }
+        96% { 
+            border-color: rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 0 15px #3b82f6; 
+        }
+        100% { 
+            border-color: rgba(59, 130, 246, 0.2); 
+            box-shadow: 0 0 5px rgba(59,130,246,0.05); 
+        }
+      }
+
+      .lightning-effect {
+          border: 2px solid rgba(59, 130, 246, 0.2);
+          animation: lightning-flash-random 6s infinite; 
+      }
+
+      /* --- NEW: ROYAL BLUE MIX TEXT --- */
+      .text-royal-mix {
+        background: linear-gradient(to bottom, #ffffff 40%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.6));
+        animation: royal-pulse 3s infinite alternate;
+      }
+
+      @keyframes royal-pulse {
+        0% { filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.4)); }
+        100% { filter: drop-shadow(0 0 25px rgba(37, 99, 235, 0.9)); }
+      }
+
+      /* --- BACKGROUND: MATCHING HEADER (Deep Blue/Black Gradient) --- */
+      @keyframes gradient-pulse {
+        0% { background-position: 50% 0%; }
+        50% { background-position: 50% 100%; }
+        100% { background-position: 50% 0%; }
+      }
+
+      @keyframes grid-move {
+        0% { background-position: 0 0; }
+        100% { background-position: 30px 30px; }
+      }
+
+      .animated-app-bg {
+        /* Deep Blue/Slate Gradient to match the Header vibe */
+        background: radial-gradient(circle at 50% -20%, #1e3a8a 0%, #0f172a 40%, #020617 100%);
+        background-size: 100% 150%;
+        animation: gradient-pulse 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* The Tech Grid Overlay (Subtle Blue on Dark) */
+      .animated-app-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: grid-move 60s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Dark Vignette */
+      .animated-app-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 40%, rgba(2, 6, 23, 0.8) 100%);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .phone-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        perspective: 1500px;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .phone-chassis {
+        width: 100%;
+        height: 100%;
+        background: #020617; /* Dark chassis */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      @media (min-width: 768px) {
+        body {
+           background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        }
+        
+        .phone-chassis {
+          width: 820px;
+          height: 960px;
+          max-height: 95vh;
+          max-width: 95vw;
+          border-radius: var(--phone-radius);
+          box-shadow: 
+            0 0 0 2px #1e293b,      
+            0 0 0 6px #3b82f6,      
+            0 0 0 8px #1d4ed8,      
+            0 0 0 10px #000,        
+            0 0 60px rgba(59, 130, 246, 0.5), 
+            0 20px 50px rgba(0,0,0,0.5);
+          border: 1px solid #3b82f6;
+          margin: auto;
+          transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+          transition: transform 0.3s ease;
+          overflow: hidden; 
+        }
+        
+        body::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center;
+          background-size: cover;
+          filter: blur(20px) brightness(0.2) saturate(1.2); /* Darker blur for desktop bg */
+          z-index: -1;
+        }
+
+        .phone-screen {
+          position: relative;
+          width: calc(100% - 24px);
+          height: calc(100% - 24px);
+          border-radius: var(--screen-radius);
+          contain: paint layout; 
+          margin: 12px;
+          border: 1px solid #1e293b;
+        }
+        
+        .phone-screen .fixed {
+          position: absolute !important;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .phone-chassis {
+          border-radius: 0;
+          box-shadow: none;
+          border: none;
+        }
+        .phone-screen {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          border: none;
+          border-radius: 0;
+        }
+      }
+
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #3b82f6, #06b6d4); border-radius: 10px; }
+
+      .animate-fade-in-up { animation: fadeInUp 0.5s ease-out; will-change: transform, opacity; }
+      @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+      .text-radiant-white-pulse { animation: text-radiant-pulse-white 2s infinite ease-in-out; }
+      @keyframes text-radiant-pulse-white {
+        0%, 100% { color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.6); }
+        50% { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+    "@vladmandic/face-api": "https://esm.sh/@vladmandic/face-api@1.7.15",
+    "@google/genai": "https://esm.sh/@google/genai@1.22.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.42.0",
+    "vite": "https://esm.sh/vite@5.0.12",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@4.2.1",
+    "zustand": "https://esm.sh/zustand@4.5.0?deps=react@18.2.0",
+    "process": "https://esm.sh/process@0.11.10",
+    "@tanstack/react-query": "https://esm.sh/@tanstack/react-query@5.17.9?deps=react@18.2.0,react-dom@18.2.0",
+    "@google/model-viewer": "https://esm.sh/@google/model-viewer@3.5.0",
+    "three": "https://esm.sh/three@0.162.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.15.19?deps=react@18.2.0,react-dom@18.2.0,three@0.162.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@9.102.6?deps=react@18.2.0,react-dom@18.2.0,three@0.162.0,@react-three/fiber@8.15.19",
+    "@capacitor/cli": "https://esm.sh/@capacitor/cli@^8.0.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="fb-root"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

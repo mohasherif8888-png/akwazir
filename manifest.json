@@ -1,0 +1,22 @@
+{
+  "short_name": "الوزير للبصريات",
+  "name": "Al Wazir Optics",
+  "description": "A modern e-commerce web application for Al Wazir Optics, featuring product browsing, a shopping cart, and a virtual try-on feature that uses the device camera.",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#020617",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#020617"
+}

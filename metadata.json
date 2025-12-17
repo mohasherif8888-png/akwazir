@@ -1,0 +1,9 @@
+{
+  "name": "Al Wazir Optics",
+  "description": "A modern e-commerce web application for Al Wazir Optics, featuring product browsing, a shopping cart, and a virtual try-on feature that uses the device camera.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
